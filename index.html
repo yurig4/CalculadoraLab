@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Kit de Ferramentas Laboratoriais</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="nav-container">
+        <button class="nav-button active" onclick="showSection('pesar')">Pesar / Concentração</button>
+        <button class="nav-button" onclick="showSection('diluir')">Diluir</button>
+        <button class="nav-button" onclick="showSection('meios')">Meios de Cultura</button>
+        <button class="nav-button" onclick="showSection('tampao')">Soluções Tampão</button> </div>
+
+    <div id="pesar" class="calculator-section active">
+        <h1>🧪 Calculadora de Concentração Química</h1>
+         <div class="input-group">
+            <label for="composto">Selecione o Composto:</label>
+            <select id="composto" onchange="toggleCustomMassaMolar()">
+                <option value="">-- Escolha um composto --</option>
+                <option value="custom">Outro (Inserir Massa Molar)</option>
+            </select>
+        </div>
+        <div class="input-group" id="custom-massa-molar-group" style="display: none;">
+            <label for="custom-massa-molar">Massa Molar (g/mol):</label>
+            <input type="number" id="custom-massa-molar" step="any" placeholder="Ex: 58.44" onchange="validateNumber(this)">
+        </div>
+         
+        <div class="calculator-subsection">
+            <h2>⚖️ Calcular Massa (g)</h2>
+            <div class="input-group">
+                <label for="molaridade">Molaridade desejada (M):</label>
+                <input type="number" id="molaridade" step="any" placeholder="Ex: 0.1" onchange="validateNumber(this)">
+            </div>
+            <div class="input-group">
+                <label for="volume2">Volume da solução (L):</label>
+                <input type="number" id="volume2" step="any" placeholder="Ex: 2.0" onchange="validateNumber(this)">
+            </div>
+            <button class="calculate-btn" onclick="calcularMassa()">Calcular Massa</button>
+            <div class="resultado" id="resultado-massa"></div>
+        </div>
+    </div>
+    
+    <div id="diluir" class="calculator-section">
+        <h1>💧 Calculadora de Diluição</h1>
+        <div class="input-group">
+            <label for="acido">Solução Concentrada (Stock):</label>
+            <select id="acido">
+                <option value="">-- Escolha uma solução ou digite abaixo --</option>
+                <option data-concentracao="12">Ácido Clorídrico (HCl) - aprox. 12 M</option>
+                <option data-concentracao="17.84">Ácido Sulfúrico (H₂SO₄) - aprox. 17.84 M</option>
+                <option data-concentracao="17.5">Ácido Acético (CH₃COOH) - aprox. 17.5 M</option>
+                <option data-concentracao="14.55">Ácido Nítrico (HNO₃) - aprox. 14.55 M</option>
+                <option value="custom">Outro (Inserir Concentração Manualmente)</option>
+            </select>
+        </div>
+        <div class="input-group" id="custom-concentracao-group">
+            <label for="custom-concentracao">Concentração do Estoque (M):</label>
+            <input type="number" id="custom-concentracao" step="any" placeholder="Ex: 10.0">
+        </div>
+        <div class="input-group">
+            <label for="concentracaoDesejada">Concentração Final Desejada (M):</label>
+            <input type="number" id="concentracaoDesejada" step="any" placeholder="Ex: 0.5">
+        </div>
+        <div class="input-group">
+            <label for="volumeDesejado">Volume Final Desejado (L):</label>
+            <input type="number" id="volumeDesejado" step="any" placeholder="Ex: 2.0">
+        </div>
+        <button class="calculate-btn" onclick="calcularDiluicao()">Calcular Volume</button>
+        <div class="resultado" id="resultado-diluir"></div>
+    </div>
+
+    <div id="meios" class="calculator-section">
+         <h1>🧫 Calculadora de Meios de Cultura</h1>
+        <div class="input-group">
+            <label for="meio">Selecione o Meio de Cultura:</label>
+            <select id="meio">
+                <option value="">-- Selecione um meio --</option>
+                </select>
+        </div>
+        <div class="input-group">
+            <label for="volumeMeio">Volume necessário (mL):</label>
+            <input type="number" id="volumeMeio" step="1" placeholder="Ex: 1000">
+        </div>
+        <button class="calculate-btn" onclick="calcularPreparoMeio()">Gerar Instruções</button>
+        <div class="resultado" id="resultado-meios"></div>
+    </div>
+
+    <div id="tampao" class="calculator-section">
+        <h1>⚖️ Calculadora de Solução Tampão</h1>
+        <p class="info-tooltip">Calcula as quantidades dos componentes (par ácido/base conjugado) para preparar um tampão com pH, concentração e volume definidos. Assume preparação por mistura direta.</p>
+
+        <div class="input-row">
+            <div class="input-group">
+                <label for="sistemaTampao">Sistema Tampão:</label>
+                <select id="sistemaTampao">
+                    <option value="">-- Selecione um sistema --</option>
+                    <option value="manual">Outro (pKa Manual)</option>
+                </select>
+            </div>
+             <div class="input-group" id="manual-pka-group">
+                <label for="manualPka">pKa Manual:</label>
+                <input type="number" id="manualPka" step="any" placeholder="Ex: 7.0">
+                <span class="info-tooltip">Insira o pKa do componente ácido do par conjugado.</span>
+            </div>
+        </div>
+
+         <div class="input-row">
+             <div class="input-group">
+                <label for="phDesejado">pH Desejado:</label>
+                <input type="number" id="phDesejado" step="0.01" placeholder="Ex: 7.4">
+             </div>
+             <div class="input-group">
+                <label for="concentracaoFinal">Concentração Final (M):</label>
+                <input type="number" id="concentracaoFinal" step="any" placeholder="Ex: 0.1">
+                 <span class="info-tooltip">Concentração total do tampão ([HA] + [A⁻]).</span>
+            </div>
+             <div class="input-group">
+                <label for="volumeFinalTampao">Volume Final (L):</label>
+                <input type="number" id="volumeFinalTampao" step="any" placeholder="Ex: 1.0">
+            </div>
+        </div>
+
+        <div id="componentes-info" style="margin-top: 15px; font-size: 0.9em; color: #555;">
+             </div>
+
+        <button class="calculate-btn" onclick="calcularTampao()">Calcular Quantidades</button>
+
+        <div class="resultado" id="resultado-tampao"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
