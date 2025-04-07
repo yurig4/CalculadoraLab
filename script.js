@@ -63,7 +63,6 @@ const compostos = [
     { nome: "Nitrito de sódio", formula: "NaNO₂", massaMolar: 69.00 },
     { nome: "Peróxido de sódio", formula: "Na₂O₂", massaMolar: 77.98 },
     { nome: "Sulfeto de sódio", formula: "Na₂S", massaMolar: 78.04 },
-    { nome: "Hidróxido de amônio", formula: "NH₄OH", massaMolar: 35.05 } // Solução aquosa de amônia
 ];
 
 // --- Dados Calculadora de Meios ---
