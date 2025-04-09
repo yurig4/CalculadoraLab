@@ -500,6 +500,56 @@ function calcularTampao() {
 
     resultadoTampaoDiv.innerHTML = resultadoTexto;
 }
+    function mostrarPreparoIndicador() {
+    const seletor = document.getElementById("indicadorSelect");
+    const valor = seletor.value;
+    const resultado = document.getElementById("resultado-indicador");
+
+    let texto = "";
+    switch (valor) {
+        case "fenolftaleina":
+            texto = `💡 <strong>Fenolftaleína</strong>:<br>
+                     Dissolver <strong>1 g</strong> em <strong>100 mL</strong> de etanol 95%.<br>
+                     Agitar e armazenar em frasco âmbar.`;
+            break;
+        case "alaranjadoMetila":
+            texto = `💡 <strong>Alaranjado de Metila</strong>:<br>
+                     Dissolver <strong>0,5 g</strong> em <strong>100 mL</strong> de água destilada.<br>
+                     Agitar e guardar protegido da luz.`;
+            break;
+        case "vermelhoMetila":
+            texto = `💡 <strong>Vermelho de Metila</strong>:<br>
+                     Dissolver <strong>0,1 g</strong> em <strong>100 mL</strong> de álcool 70% ou água destilada.`;
+            break;
+        case "azulBromotimol":
+            texto = `💡 <strong>Azul de Bromotimol</strong>:<br>
+                     Dissolver <strong>0,1 g</strong> em <strong>50 mL</strong> de etanol e completar com água até 100 mL.`;
+            break;
+        case "verdeBromocresol":
+            texto = `💡 <strong>Verde de Bromocresol</strong>:<br>
+                     Dissolver <strong>0,04 g</strong> em <strong>100 mL</strong> de etanol 95% ou água com etanol.`;
+            break;
+        case "negroEriocromoT":
+            texto = `💡 <strong>Negro de Eriocromo T</strong>:<br>
+                     Dissolver <strong>0,5 g</strong> em <strong>50 mL</strong> de etanol + 50 mL de água<br>
+                     OU preparar mistura sólida com <strong>100 g</strong> de NaCl.`;
+            break;
+        case "azulMetileno":
+            texto = `💡 <strong>Azul de Metileno</strong>:<br>
+                     Dissolver <strong>0,1 g</strong> em <strong>100 mL</strong> de água destilada.<br>
+                     Armazenar protegido da luz.`;
+            break;
+        case "timolftaleina":
+            texto = `💡 <strong>Timolftaleína</strong>:<br>
+                     Dissolver <strong>1 g</strong> em <strong>100 mL</strong> de etanol 95%.<br>
+                     Solução azul em meio básico.`;
+            break;
+        default:
+            texto = "";
+    }
+
+    resultado.innerHTML = texto ? `<div>${texto}</div>` : "";
+}
 
 
 // --- Inicialização ---
