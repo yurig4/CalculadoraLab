@@ -63,6 +63,7 @@ body {
 #diluir { border-top-color: #9b59b6; } /* Roxo */
 #meios { border-top-color: #1abc9c; } /* Verde água */
 #tampao { border-top-color: #f1c40f; } /* Amarelo */
+#indicadores { border-top-color: #e67e22; } /* Laranja */
 
 
 .calculator-section.active {
