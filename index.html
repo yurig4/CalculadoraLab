@@ -106,26 +106,7 @@
                 <span class="info-tooltip">Insira o pKa do componente ácido do par conjugado.</span>
             </div>
         </div>
-        <div id="indicadores" class="calculator-section">
-            <h1>🧪 Indicadores Químicos</h1>
-            <p>Selecione um indicador para visualizar o modo de preparo:</p>
-            <div class="input-group">
-                <label for="indicadorSelect">Indicador:</label>
-                <select id="indicadorSelect" onchange="mostrarPreparoIndicador()">
-                    <option value="">-- Escolha um indicador --</option>
-                    <option value="fenolftaleina">Fenolftaleína</option>
-                    <option value="alaranjadoMetila">Alaranjado de Metila</option>
-                    <option value="vermelhoMetila">Vermelho de Metila</option>
-                    <option value="azulBromotimol">Azul de Bromotimol</option>
-                    <option value="verdeBromocresol">Verde de Bromocresol</option>
-                    <option value="negroEriocromoT">Negro de Eriocromo T</option>
-                    <option value="azulMetileno">Azul de Metileno</option>
-                    <option value="timolftaleina">Timolftaleína</option>
-                </select>
-            </div>
-            <div class="resultado" id="resultado-indicador"></div>
-        </div>
-
+        
          <div class="input-row">
              <div class="input-group">
                 <label for="phDesejado">pH Desejado:</label>
@@ -149,6 +130,27 @@
 
         <div class="resultado" id="resultado-tampao"></div>
     </div>
+
+    <div id="indicadores" class="calculator-section">
+            <h1>🧪 Indicadores Químicos</h1>
+            <p>Selecione um indicador para visualizar o modo de preparo:</p>
+            <div class="input-group">
+                <label for="indicadorSelect">Indicador:</label>
+                <select id="indicadorSelect" onchange="mostrarPreparoIndicador()">
+                    <option value="">-- Escolha um indicador --</option>
+                    <option value="fenolftaleina">Fenolftaleína</option>
+                    <option value="alaranjadoMetila">Alaranjado de Metila</option>
+                    <option value="vermelhoMetila">Vermelho de Metila</option>
+                    <option value="azulBromotimol">Azul de Bromotimol</option>
+                    <option value="verdeBromocresol">Verde de Bromocresol</option>
+                    <option value="negroEriocromoT">Negro de Eriocromo T</option>
+                    <option value="azulMetileno">Azul de Metileno</option>
+                    <option value="timolftaleina">Timolftaleína</option>
+                </select>
+            </div>
+            <div class="resultado" id="resultado-indicador"></div>
+        </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
