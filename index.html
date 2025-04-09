@@ -10,7 +10,8 @@
         <button class="nav-button active" onclick="showSection('pesar')">Pesar / Concentração</button>
         <button class="nav-button" onclick="showSection('diluir')">Diluir</button>
         <button class="nav-button" onclick="showSection('meios')">Meios de Cultura</button>
-        <button class="nav-button" onclick="showSection('tampao')">Soluções Tampão</button> </div>
+        <button class="nav-button" onclick="showSection('tampao')">Soluções Tampão</button>
+        <button class="nav-button" onclick="showSection('indicadores')">Índicadores Químicos</button></div>
 
     <div id="pesar" class="calculator-section active">
         <h1>🧪 Calculadora de Concentração Química</h1>
@@ -51,7 +52,7 @@
                 <option data-concentracao="17.84">Ácido Sulfúrico (H₂SO₄) - aprox. 17.84 M</option>
                 <option data-concentracao="17.5">Ácido Acético (CH₃COOH) - aprox. 17.5 M</option>
                 <option data-concentracao="14.55">Ácido Nítrico (HNO₃) - aprox. 14.55 M</option>
-                <option data-concentracao="6.49">Hidróxido de Amôino (NH₄OH) - aprox. 6.49 M</option>
+                <option data-concentracao="6.49">Hidróxido de Amônio (NH₄OH) - aprox. 6.49 M</option>
                 <option value="custom">Outro (Inserir Concentração Manualmente)</option>
             </select>
         </div>
@@ -104,6 +105,25 @@
                 <input type="number" id="manualPka" step="any" placeholder="Ex: 7.0">
                 <span class="info-tooltip">Insira o pKa do componente ácido do par conjugado.</span>
             </div>
+        </div>
+        <div id="indicadores" class="calculator-section">
+            <h1>🧪 Indicadores Químicos</h1>
+            <p>Selecione um indicador para visualizar o modo de preparo:</p>
+            <div class="input-group">
+                <label for="indicadorSelect">Indicador:</label>
+                <select id="indicadorSelect" onchange="mostrarPreparoIndicador()">
+                    <option value="">-- Escolha um indicador --</option>
+                    <option value="fenolftaleina">Fenolftaleína</option>
+                    <option value="alaranjadoMetila">Alaranjado de Metila</option>
+                    <option value="vermelhoMetila">Vermelho de Metila</option>
+                    <option value="azulBromotimol">Azul de Bromotimol</option>
+                    <option value="verdeBromocresol">Verde de Bromocresol</option>
+                    <option value="negroEriocromoT">Negro de Eriocromo T</option>
+                    <option value="azulMetileno">Azul de Metileno</option>
+                    <option value="timolftaleina">Timolftaleína</option>
+                </select>
+            </div>
+            <div class="resultado" id="resultado-indicador"></div>
         </div>
 
          <div class="input-row">
