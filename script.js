@@ -191,9 +191,12 @@ function calcularMassa() {
         massaMolar = parseFloat(selectCompostoEl.value);
     }
     const resultadoDiv = document.getElementById('resultado-massa');
+    const pureza = parseFloat(document.getElementById('pureza').value || "100") / 100;
+
     if (!validarEntradasConcentracao(massaMolar, molaridade, volume)) {
         resultadoDiv.innerHTML = ""; return;    }
-    const massa = molaridade * massaMolar * volume;
+    const massa = (molaridade * massaMolar * volume) / pureza;
+
     resultadoDiv.innerHTML = `Massa necessária = <span class="valor-calculado">${massa.toFixed(4)}</span> <span class="unidade">g</span>`;
 }
 
@@ -235,15 +238,12 @@ function calcularDiluicao() {
     const V1_litros = (concentracaoDesejada * volumeDesejado) / concentracaoEstoque;
     const V1_ml = V1_litros * 1000;
     const volumeAgua = (volumeDesejado - V1_litros) * 1000;
-    resultadoDiv.innerHTML = `
-        Para preparar <span class="destaque">${volumeDesejado.toFixed(2)} L</span> da solução <span class="destaque">${concentracaoDesejada.toFixed(3)} M</span>:
-        <br>
-        Volume necessário do estoque (<span class="destaque">${concentracaoEstoque.toFixed(2)} M</span>):
-        <br>
-        <span class="valor-calculado">${V1_ml.toFixed(3)}</span> <span class="unidade">mL</span>
-        <br><br>
-        <small>Complete o volume com aproximadamente <span class="destaque">${volumeAgua > 0 ? volumeAgua.toFixed(2) : 0} mL</span> de solvente (geralmente água destilada) para atingir o volume final desejado. Lembre-se da segurança: adicione o ácido à água, nunca o contrário, especialmente para ácidos fortes!</small>
-    `;
+    resultadoDiv.innerHTML = `        
+    Para preparar <strong>${volumeDesejado.toFixed(2)} L </strong> da solução <strong>${concentracaoDesejada.toFixed(3)}</strong> M:
+    Volume necessário do estoque (<strong>${concentracaoEstoque.toFixed(2)} M</strong>):  <span class="valor-calculado"> ${V1_ml.toFixed(3)} mL</span>
+    <small><strong>Lembre-se:</strong> adicione o ácido à água, nunca o contrário, especialmente para ácidos fortes!</small><br>
+`;
+
 }
 
 // --- Funções Calculadora de Meios ---

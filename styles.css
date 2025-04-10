@@ -210,3 +210,10 @@ button.calculate-btn:hover {
     margin-top: -5px;
     margin-bottom: 10px;
 }
+
+@media (max-width: 600px) {
+    .input-row {
+      flex-direction: column;
+    }
+  }
+  
