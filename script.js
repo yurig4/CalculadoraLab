@@ -184,21 +184,32 @@ function validarEntradasConcentracao(massaMolar, ...valores) {
 function calcularMassa() {
     const molaridade = parseFloat(document.getElementById('molaridade').value);
     const volume = parseFloat(document.getElementById('volume2').value);
+    const hidratacao = parseInt(document.getElementById('hidratacao').value) || 0;
     let massaMolar;
+    
     if (selectCompostoEl.value === 'custom') {
         massaMolar = parseFloat(document.getElementById('custom-massa-molar').value);
     } else {
         massaMolar = parseFloat(selectCompostoEl.value);
     }
+    
     const resultadoDiv = document.getElementById('resultado-massa');
     const pureza = parseFloat(document.getElementById('pureza').value || "100") / 100;
 
     if (!validarEntradasConcentracao(massaMolar, molaridade, volume)) {
-        resultadoDiv.innerHTML = ""; return;    }
-    const massa = (molaridade * massaMolar * volume) / pureza;
+        resultadoDiv.innerHTML = ""; return;
+    }
+    
+    // Adiciona a massa da água de hidratação (18.015 g/mol por cada H₂O)
+    const massaMolarTotal = massaMolar + (hidratacao * 18.015);
+    
+    const massa = (molaridade * massaMolarTotal * volume) / pureza;
 
     resultadoDiv.innerHTML = `Massa necessária = <span class="valor-calculado">${massa.toFixed(4)}</span> <span class="unidade">g</span>`;
-}
+    if (hidratacao > 0) {
+        resultadoDiv.innerHTML += `<br><small>Massa molar considerada: ${massaMolar.toFixed(2)} g/mol (composto) + ${(hidratacao * 18.015).toFixed(2)} g/mol (${hidratacao}H₂O) = ${massaMolarTotal.toFixed(2)} g/mol</small>`;
+    }
+
 
 // --- Funções Calculadora de Diluição ---
 function toggleCustomConcentracao() {
