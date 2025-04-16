@@ -34,7 +34,7 @@ const compostos = [
     { nome: "Nitrato de potássio", formula: "KNO₃", massaMolar: 101.10 },
     { nome: "Óxido de cobre(II)", formula: "CuO", massaMolar: 79.55 },
     { nome: "Sulfato de alumínio", formula: "Al₂(SO₄)₃", massaMolar: 342.15 },
-    { nome: "Bicarbonato de sódio (Hidrogenocarbonato de sódio)", formula: "NaHCO₃", massaMolar: 84.01 }, // Nome alternativo
+    { nome: "Bicarbonato de sódio", formula: "NaHCO₃", massaMolar: 84.01 }, // Nome alternativo
     { nome: "Fosfato de sódio (tribásico)", formula: "Na₃PO₄", massaMolar: 163.94 }, // Nome mais específico
     { nome: "Óxido de ferro(III)", formula: "Fe₂O₃", massaMolar: 159.69 }, // Nome correto
     { nome: "Sulfato de bário", formula: "BaSO₄", massaMolar: 233.38 },
@@ -182,13 +182,27 @@ function validarEntradasConcentracao(massaMolar, ...valores) {
 }
 
 function calcularMassa() {
-    const molaridade = parseFloat(document.getElementById('molaridade').value);
-    const volume = parseFloat(document.getElementById('volume2').value);
-    const hidratacao = parseInt(document.getElementById('hidratacao').value) || 0;
+    const molaridadeInput = document.getElementById('molaridade').value.trim();
+    const volumeInput = document.getElementById('volume2').value.trim();
+    const hidratacaoInput = document.getElementById('hidratacao').value.trim();
+    
+    const molaridade = parseFloat(molaridadeInput);
+    const volume = parseFloat(volumeInput);
+    const hidratacao = parseInt(hidratacaoInput) || 0;
     let massaMolar;
     
+    if (!molaridadeInput || !volumeInput) {
+        alert("⚠️ Preencha os campos de molaridade e volume.");
+        return;
+    }
+    
     if (selectCompostoEl.value === 'custom') {
-        massaMolar = parseFloat(document.getElementById('custom-massa-molar').value);
+        const customMassaMolarInput = document.getElementById('custom-massa-molar').value.trim();
+        if (!customMassaMolarInput) {
+            alert("⚠️ Preencha a massa molar do composto.");
+            return;
+        }
+        massaMolar = parseFloat(customMassaMolarInput);
     } else {
         massaMolar = parseFloat(selectCompostoEl.value);
     }
