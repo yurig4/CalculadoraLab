@@ -1,3 +1,4 @@
+
 // --- Elementos Globais ---
 const selectCompostoEl = document.getElementById('composto');
 const selectAcidoEl = document.getElementById('acido');
@@ -266,7 +267,8 @@ function calcularDiluicao() {
     const volumeAgua = (volumeDesejado - V1_litros) * 1000;
     resultadoDiv.innerHTML = `        
     Para preparar <strong>${volumeDesejado.toFixed(2)} L </strong> da solução <strong>${concentracaoDesejada.toFixed(3)}</strong> M:
-    Volume necessário do estoque (<strong>${concentracaoEstoque.toFixed(2)} M</strong>):  <span class="valor-calculado"> ${V1_ml.toFixed(3)} mL</span>
+    Volume necessário do estoque (<strong>${concentracaoEstoque.toFixed(2)} M</strong>): <span class="valor-calculado">${V1_ml.toFixed(3)} mL</span><br>
+    Completar com água destilada: <span class="valor-calculado">${volumeAgua.toFixed(3)} mL</span>
     <small><strong>Lembre-se:</strong> adicione o ácido à água, nunca o contrário, especialmente para ácidos fortes!</small><br>
 `;
 
