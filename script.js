@@ -21,12 +21,12 @@ const compostos = [
     { nome: "Nitrato de prata", formula: "AgNO₃", massaMolar: 169.87 },
     { nome: "Hidróxido de potássio", formula: "KOH", massaMolar: 56.11 },
     { nome: "Cloreto de potássio", formula: "KCl", massaMolar: 74.55 },
-    { nome: "Sulfato de magnésio heptahidratado", formula: "MgSO₄·7H₂O", massaMolar: 246.47 }, // Nome mais completo
+    { nome: "Sulfato de magnésio", formula: "MgSO₄", massaMolar: 120.37 }, // Nome mais completo
     { nome: "Óxido de cálcio", formula: "CaO", massaMolar: 56.08 },
     { nome: "Carbonato de sódio", formula: "Na₂CO₃", massaMolar: 105.99 },
     { nome: "Nitrato de sódio", formula: "NaNO₃", massaMolar: 84.99 },
     { nome: "Cloreto de cálcio", formula: "CaCl₂", massaMolar: 110.98 },
-    { nome: "Sulfato de cobre(II) pentahidratado", formula: "CuSO₄·5H₂O", massaMolar: 249.68 }, // Nome mais completo
+    { nome: "Sulfato de cobre(II)", formula: "CuSO₄", massaMolar: 159.61 }, // Nome mais completo
     { nome: "Óxido de zinco", formula: "ZnO", massaMolar: 81.38 },
     { nome: "Hidróxido de cálcio", formula: "Ca(OH)₂", massaMolar: 74.09 },
     { nome: "Sulfato de ferro(II)", formula: "FeSO₄", massaMolar: 151.91 }, // Nome correto
